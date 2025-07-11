@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Engineer | System Architect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header with Terminal Effect */
+        .header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #0a0a0a, #1f1f1f);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 0.8; }
+        }
+
+        .terminal {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f5f; }
+        .dot-yellow { background: #ffff5f; }
+        .dot-green { background: #5fff5f; }
+
+        .terminal-content h1 {
+            font-size: 2.5rem;
+            color: #00ff41;
+            margin-bottom: 10px;
+            animation: typewriter 2s steps(20) 1s forwards;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #00ff41;
+            width: 0;
+        }
+
+        @keyframes typewriter {
+            to { width: 100%; }
+        }
+
+        .terminal-content .role {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .terminal-content .description {
+            color: #74c0fc;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .nav a:hover {
+            color: #00ff41;
+            background: rgba(0, 255, 65, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #00ff41;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #00ff41, #ff6b6b);
+        }
+
+        /* Tech Stack Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 65, 0.1);
+            border-color: #00ff41;
+        }
+
+        .tech-card h3 {
+            color: #ff6b6b;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 255, 65, 0.1);
+            color: #00ff41;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 255, 65, 0.3);
+        }
+
+        /* Project Cards */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-title {
+            color: #74c0fc;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric {
+            background: rgba(255, 107, 107, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #ff6b6b;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .metric-value {
+            font-size: 1.1rem;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            margin: 50px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00ff41, #ff6b6b);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 50px 0;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-content {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .timeline-date {
+            color: #00ff41;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            color: #74c0fc;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-company {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.05), rgba(255, 107, 107, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #00ff41;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .terminal-content h1 {
+                font-size: 2rem;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 50px);
+                left: 50px !important;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#home">~/home</a></li>
+                <li><a href="#stack">./tech-stack</a></li>
+                <li><a href="#projects">./projects</a></li>
+                <li><a href="#experience">./education</a></li>
+                <li><a href="#contact">./contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="header">
+        <div class="container">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                </div>
+                <div class="terminal-content">
+                    <h1>$ whoami</h1>
+                    <div class="role">Kalaiselvam M - Backend Developer</div>
+                    <div class="description">
+                        Aspiring backend developer with strong fundamentals in Java and Spring Boot<br>
+                        Building secure, scalable REST APIs and microservices architecture<br>
+                        Passionate about clean code, system design, and continuous learning<br><br>
+                        <span style="color: #00ff41;">></span> Currently mastering Spring Security, Microservices, and System Design<br>
+                        <span style="color: #00ff41;">></span> Dedicated to building robust backend systems with modern Java stack
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stack" class="section">
+        <div class="container">
+            <h2 class="section-title">Tech Stack & Infrastructure</h2>
+            <div class="tech-grid">
+                <div class="tech-card fade-in">
+                    <h3>Core Languages & Frameworks</h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Spring Security</span>
+                        <span class="tech-tag">Spring Data JPA</span>
+                        <span class="tech-tag">Hibernate</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="tech-card fade-in">
+                    <h3>Database & ORM</h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Spring Data JPA</span>
+                        <span class="tech-tag">Hibernate</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Database Design</span>
+                        <span class="tech-tag">Normalization</span>
+                    </div>
+                </div>
+                <div class="tech-card fade-in">
+                    <h3>Development Tools</h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">IntelliJ IDEA</span>
+                        <span class="tech-tag">VS Code</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">Postman</span>
+                        <span class="tech-tag">Swagger</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">BCrypt</span>
+                    </div>
+                </div>
+                <div class="tech-card fade-in">
+                    <h3>API Design & Security</h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Spring Security</span>
+                        <span class="tech-tag">JWT</span>
+                        <span class="tech-tag">OAuth</span>
+                        <span class="tech-tag">Role-based Auth</span>
+                        <span class="tech-tag">API Documentation</span>
+                        <span class="tech-tag">Swagger UI</span>
+                    </div>
+                </div>
+                <div class="tech-card fade-in">
+                    <h3>Currently Learning</h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">Microservices</span>
+                        <span class="tech-tag">System Design</span>
+                        <span class="tech-tag">Advanced Spring</span>
+                        <span class="tech-tag">Cloud Architecture</span>
+                        <span class="tech-tag">Distributed Systems</span>
+                        <span class="tech-tag">Performance Tuning</span>
+                    </div>
+                </div>
+                <div class="tech-card fade-in">
+                    <h3>Computer Vision & AI</h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">MediaPipe</span>
+                        <span class="tech-tag">PyAutoGUI</span>
+                        <span class="tech-tag">Data Science</span>
+                        <span class="tech-tag">AI/ML</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Backend Projects & Applications</h2>
+            <div class="project-grid">
+                <div class="project-card fade-in">
+                    <h3 class="project-title">Student Attendance Tracker - REST API</h3>
+                    <p class="project-description">
+                        Secure Spring Boot backend API for comprehensive student record management and attendance tracking with role-based authentication and full CRUD operations.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Authentication</div>
+                            <div class="metric-value">Role-based</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Security</div>
+                            <div class="metric-value">BCrypt</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">API Docs</div>
+                            <div class="metric-value">Swagger UI</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Database</div>
+                            <div class="metric-value">Normalized</div>
+                        </div>
+                    </div>
+                    <div class="tech-list">
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Spring Security</span>
+                        <span class="tech-tag">JPA</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Swagger</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <h3 class="project-title">Quiz Web Application - Full Stack</h3>
+                    <p class="project-description">
+                        Dynamic quiz platform with Spring Boot backend and interactive frontend. Features RESTful APIs, containerized deployment, and responsive design.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Architecture</div>
+                            <div class="metric-value">REST API</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Frontend</div>
+                            <div class="metric-value">Vanilla JS</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Deployment</div>
+                            <div class="metric-value">Docker</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">ORM</div>
+                            <div class="metric-value">Hibernate</div>
+                        </div>
+                    </div>
+                    <div class="tech-list">
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Spring Data JPA</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <h3 class="project-title">Hands-Free Media Control - Computer Vision</h3>
+                    <p class="project-description">
+                        Innovative gesture-based media control system using real-time hand tracking and audio detection. Features robust computer vision algorithms and cross-platform compatibility.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Real-time</div>
+                            <div class="metric-value">Hand Tracking</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">CV Algorithm</div>
+                            <div class="metric-value">MediaPipe</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Performance</div>
+                            <div class="metric-value">Optimized</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Platform</div>
+                            <div class="metric-value">Cross-OS</div>
+                        </div>
+                    </div>
+                    <div class="tech-list">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">MediaPipe</span>
+                        <span class="tech-tag">PyAutoGUI</span>
+                        <span class="tech-tag">Computer Vision</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <h3 class="project-title">Problem Solving & DSA Practice</h3>
+                    <p class="project-description">
+                        Continuous practice in Data Structures and Algorithms with focus on optimization and clean code. Regular problem solving on competitive programming platforms.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Platform</div>
+                            <div class="metric-value">LeetCode</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Language</div>
+                            <div class="metric-value">Java</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Focus</div>
+                            <div class="metric-value">Optimization</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Practice</div>
+                            <div class="metric-value">Daily</div>
+                        </div>
+                    </div>
+                    <div class="tech-list">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Data Structures</span>
+                        <span class="tech-tag">Algorithms</span>
+                        <span class="tech-tag">Problem Solving</span>
+                        <span class="tech-tag">OOP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - 2026</div>
+                        <div class="timeline-title">BTech in Artificial Intelligence and Data Science</div>
+                        <div class="timeline-company">Sri Manakula Vinayagar Engineering College, Pondicherry</div>
+                        <p>Current CGPA: 7.90 | Specializing in AI/ML with strong foundation in backend development, data structures, and system design.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-title">Higher Secondary Education</div>
+                        <div class="timeline-company">Achariya Siksha Mandir, Pondicherry</div>
+                        <p>Completed SSLC and HSC with strong academic performance, building foundation for technical education.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Professional Certifications</div>
+                        <div class="timeline-title">Technical Certifications</div>
+                        <div class="timeline-company">NPTEL, AICTE, SkillRack</div>
+                        <p>• NPTEL - Programming in Java<br>
+                        • NPTEL - Python For Data Science<br>
+                        • AICTE - Java Full Stack Development<br>
+                        • AICTE - Data Analytics & Data Science Virtual Internships<br>
+                        • SkillRack - SQL, Python</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Network Endpoints</h2>
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email Protocol</h3>
+                    <p>kalaimurugan031@gmail.com</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📱</div>
+                    <h3>Mobile Network</h3>
+                    <p>+91-9698160088</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">🔗</div>
+                    <h3>LinkedIn API</h3>
+                    <p>linkedin.com/in/kalai-selvam-m</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">🐙</div>
+                    <h3>Git Repository</h3>
+                    <p>github.com/KalaiSelvam31</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">💻</div>
+                    <h3>LeetCode Profile</h3>
+                    <p>leetcode.com/Kalai031</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">🌍</div>
+                    <h3>Location</h3>
+                    <p>Pondicherry, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Terminal typing effect enhancement
+        setTimeout(() => {
+            const cursor = document.querySelector('.terminal-content h1');
+            if (cursor) {
+                cursor.style.borderRight = 'none';
+            }
+        }, 3000);
+
+        // Add active nav highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section, .header');
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '#e0e0e0';
+                link.style.background = 'none';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.color = '#00ff41';
+                    link.style.background = 'rgba(0, 255, 65, 0.1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
