@@ -362,17 +362,46 @@
             padding: 30px;
             text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
         }
 
         .contact-card:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 255, 65, 0.2);
+            border-color: #00ff41;
         }
 
         .contact-icon {
             font-size: 2rem;
             margin-bottom: 15px;
             color: #00ff41;
+        }
+
+        .contact-card h3 {
+            color: #74c0fc;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: #e0e0e0;
+            font-size: 0.9rem;
         }
 
         /* Responsive Design */
@@ -442,11 +471,12 @@
                     <h1>$ whoami</h1>
                     <div class="role">Kalaiselvam M - Backend Developer</div>
                     <div class="description">
-                        Aspiring backend developer with strong fundamentals in Java and Spring Boot<br>
-                        Building secure, scalable REST APIs and microservices architecture<br>
-                        Passionate about clean code, system design, and continuous learning<br><br>
-                        <span style="color: #00ff41;">></span> Currently mastering Spring Security, Microservices, and System Design<br>
-                        <span style="color: #00ff41;">></span> Dedicated to building robust backend systems with modern Java stack
+                        Motivated backend developer skilled in Java, Spring Boot, and REST API development<br>
+                        Experienced in building production-level secure, scalable applications<br>
+                        Passionate about clean code, backend architecture, and continuous learning<br><br>
+                        <span style="color: #00ff41;">></span> Backend-Focused: Building reliable and scalable REST APIs using Java and Spring Boot<br>
+                        <span style="color: #00ff41;">></span> Security-Aware: Understanding access control, encryption, and secure coding practices<br>
+                        <span style="color: #00ff41;">></span> Blended Skills: Combining backend engineering with AI/ML experience for smarter systems
                     </div>
                 </div>
             </div>
@@ -455,30 +485,35 @@
 
     <section id="stack" class="section">
         <div class="container">
-            <h2 class="section-title">Tech Stack & Infrastructure</h2>
+            <h2 class="section-title">Tech Stack</h2>
             <div class="tech-grid">
                 <div class="tech-card fade-in">
-                    <h3>Core Languages & Frameworks</h3>
+                    <h3>Backend Development</h3>
                     <div class="tech-list">
                         <span class="tech-tag">Java</span>
                         <span class="tech-tag">Spring Boot</span>
                         <span class="tech-tag">Spring Security</span>
                         <span class="tech-tag">Spring Data JPA</span>
                         <span class="tech-tag">Hibernate</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">REST APIs</span>
                     </div>
                 </div>
                 <div class="tech-card fade-in">
-                    <h3>Database & ORM</h3>
+                    <h3>Database</h3>
                     <div class="tech-list">
                         <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">Spring Data JPA</span>
-                        <span class="tech-tag">Hibernate</span>
                         <span class="tech-tag">SQL</span>
                         <span class="tech-tag">Database Design</span>
                         <span class="tech-tag">Normalization</span>
+                    </div>
+                </div>
+                <div class="tech-card fade-in">
+                    <h3>Security & Authentication</h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">JWT</span>
+                        <span class="tech-tag">OAuth</span>
+                        <span class="tech-tag">BCrypt</span>
+                        <span class="tech-tag">Role-based Access</span>
                     </div>
                 </div>
                 <div class="tech-card fade-in">
@@ -490,41 +525,23 @@
                         <span class="tech-tag">Postman</span>
                         <span class="tech-tag">Swagger</span>
                         <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">BCrypt</span>
                     </div>
                 </div>
                 <div class="tech-card fade-in">
-                    <h3>API Design & Security</h3>
+                    <h3>Frontend & Web</h3>
                     <div class="tech-list">
-                        <span class="tech-tag">REST APIs</span>
-                        <span class="tech-tag">Spring Security</span>
-                        <span class="tech-tag">JWT</span>
-                        <span class="tech-tag">OAuth</span>
-                        <span class="tech-tag">Role-based Auth</span>
-                        <span class="tech-tag">API Documentation</span>
-                        <span class="tech-tag">Swagger UI</span>
-                    </div>
-                </div>
-                <div class="tech-card fade-in">
-                    <h3>Currently Learning</h3>
-                    <div class="tech-list">
-                        <span class="tech-tag">Microservices</span>
-                        <span class="tech-tag">System Design</span>
-                        <span class="tech-tag">Advanced Spring</span>
-                        <span class="tech-tag">Cloud Architecture</span>
-                        <span class="tech-tag">Distributed Systems</span>
-                        <span class="tech-tag">Performance Tuning</span>
-                    </div>
-                </div>
-                <div class="tech-card fade-in">
-                    <h3>Computer Vision & AI</h3>
-                    <div class="tech-list">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML/CSS</span>
                         <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+                <div class="tech-card fade-in">
+                    <h3>AI & Computer Vision</h3>
+                    <div class="tech-list">
                         <span class="tech-tag">OpenCV</span>
                         <span class="tech-tag">MediaPipe</span>
                         <span class="tech-tag">PyAutoGUI</span>
                         <span class="tech-tag">Data Science</span>
-                        <span class="tech-tag">AI/ML</span>
                     </div>
                 </div>
             </div>
@@ -535,6 +552,38 @@
         <div class="container">
             <h2 class="section-title">Backend Projects & Applications</h2>
             <div class="project-grid">
+                <div class="project-card fade-in">
+                    <h3 class="project-title">E-Commerce Backend API - Production Ready</h3>
+                    <p class="project-description">
+                        Full-featured e-commerce backend with comprehensive user authentication, product management, and complete cart/order workflows. Features JWT authentication, role-based access control, and admin dashboard capabilities.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Authentication</div>
+                            <div class="metric-value">JWT + BCrypt</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Features</div>
+                            <div class="metric-value">Full CRUD</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Security</div>
+                            <div class="metric-value">Role-based</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Status</div>
+                            <div class="metric-value">Production</div>
+                        </div>
+                    </div>
+                    <div class="tech-list">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Spring Security</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">JWT</span>
+                    </div>
+                </div>
+
                 <div class="project-card fade-in">
                     <h3 class="project-title">Student Attendance Tracker - REST API</h3>
                     <p class="project-description">
@@ -602,20 +651,20 @@
                 <div class="project-card fade-in">
                     <h3 class="project-title">Hands-Free Media Control - Computer Vision</h3>
                     <p class="project-description">
-                        Innovative gesture-based media control system using real-time hand tracking and audio detection. Features robust computer vision algorithms and cross-platform compatibility.
+                        Real-time gesture recognition system using MediaPipe's hand tracking module. Maps specific finger gestures to control keyboard media keys with 90%+ accuracy in normal lighting conditions.
                     </p>
                     <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Accuracy</div>
+                            <div class="metric-value">90%+</div>
+                        </div>
                         <div class="metric">
                             <div class="metric-label">Real-time</div>
                             <div class="metric-value">Hand Tracking</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-label">CV Algorithm</div>
-                            <div class="metric-value">MediaPipe</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">Performance</div>
-                            <div class="metric-value">Optimized</div>
+                            <div class="metric-label">Compatibility</div>
+                            <div class="metric-value">VLC + YouTube</div>
                         </div>
                         <div class="metric">
                             <div class="metric-label">Platform</div>
@@ -624,42 +673,10 @@
                     </div>
                     <div class="tech-list">
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">OpenCV</span>
                         <span class="tech-tag">MediaPipe</span>
+                        <span class="tech-tag">OpenCV</span>
                         <span class="tech-tag">PyAutoGUI</span>
                         <span class="tech-tag">Computer Vision</span>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <h3 class="project-title">Problem Solving & DSA Practice</h3>
-                    <p class="project-description">
-                        Continuous practice in Data Structures and Algorithms with focus on optimization and clean code. Regular problem solving on competitive programming platforms.
-                    </p>
-                    <div class="project-metrics">
-                        <div class="metric">
-                            <div class="metric-label">Platform</div>
-                            <div class="metric-value">LeetCode</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">Language</div>
-                            <div class="metric-value">Java</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">Focus</div>
-                            <div class="metric-value">Optimization</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">Practice</div>
-                            <div class="metric-value">Daily</div>
-                        </div>
-                    </div>
-                    <div class="tech-list">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Data Structures</span>
-                        <span class="tech-tag">Algorithms</span>
-                        <span class="tech-tag">Problem Solving</span>
-                        <span class="tech-tag">OOP</span>
                     </div>
                 </div>
             </div>
@@ -683,7 +700,7 @@
                         <div class="timeline-date">2022</div>
                         <div class="timeline-title">Higher Secondary Education</div>
                         <div class="timeline-company">Achariya Siksha Mandir, Pondicherry</div>
-                        <p>Completed SSLC and HSC with strong academic performance, building foundation for technical education.</p>
+                        <p>Completed Higher Secondary Education with 86% - building foundation for technical education in mathematics and science.</p>
                     </div>
                 </div>
                 <div class="timeline-item fade-in">
@@ -706,32 +723,32 @@
         <div class="container">
             <h2 class="section-title">Network Endpoints</h2>
             <div class="contact-grid">
-                <div class="contact-card fade-in">
+                <div class="contact-card fade-in" onclick="window.open('mailto:kalaimurugan031@gmail.com', '_blank')">
                     <div class="contact-icon">📧</div>
                     <h3>Email Protocol</h3>
                     <p>kalaimurugan031@gmail.com</p>
                 </div>
-                <div class="contact-card fade-in">
+                <div class="contact-card fade-in" onclick="window.open('tel:+919698160088', '_blank')">
                     <div class="contact-icon">📱</div>
                     <h3>Mobile Network</h3>
                     <p>+91-9698160088</p>
                 </div>
-                <div class="contact-card fade-in">
+                <div class="contact-card fade-in" onclick="window.open('https://linkedin.com/in/kalai-selvam-m', '_blank')">
                     <div class="contact-icon">🔗</div>
                     <h3>LinkedIn API</h3>
                     <p>linkedin.com/in/kalai-selvam-m</p>
                 </div>
-                <div class="contact-card fade-in">
+                <div class="contact-card fade-in" onclick="window.open('https://github.com/KalaiSelvam31', '_blank')">
                     <div class="contact-icon">🐙</div>
                     <h3>Git Repository</h3>
                     <p>github.com/KalaiSelvam31</p>
                 </div>
-                <div class="contact-card fade-in">
+                <div class="contact-card fade-in" onclick="window.open('https://leetcode.com/Kalai031', '_blank')">
                     <div class="contact-icon">💻</div>
                     <h3>LeetCode Profile</h3>
                     <p>leetcode.com/Kalai031</p>
                 </div>
-                <div class="contact-card fade-in">
+                <div class="contact-card fade-in" onclick="window.open('https://maps.google.com/?q=Pondicherry,India', '_blank')">
                     <div class="contact-icon">🌍</div>
                     <h3>Location</h3>
                     <p>Pondicherry, India</p>
