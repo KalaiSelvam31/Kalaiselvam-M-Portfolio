@@ -219,7 +219,7 @@
         /* Project Cards */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 40px;
             margin-top: 50px;
         }
@@ -406,10 +406,38 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .terminal {
+                padding: 15px;
+            }
+
             .terminal-content h1 {
                 font-size: 2rem;
             }
+
+            .terminal-content .role {
+                font-size: 1.1rem;
+            }
             
+            .terminal-content .description {
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .tech-card, .project-card, .timeline-content, .contact-card {
+                padding: 20px;
+            }
+
+            .project-title {
+                font-size: 1.2rem;
+            }
+
             .timeline::before {
                 left: 20px;
             }
@@ -426,6 +454,7 @@
             .nav ul {
                 flex-direction: column;
                 gap: 10px;
+                align-items: center;
             }
 
             .section {
@@ -453,7 +482,7 @@
                 <li><a href="#home">~/home</a></li>
                 <li><a href="#stack">./tech-stack</a></li>
                 <li><a href="#projects">./projects</a></li>
-                <li><a href="#experience">./education</a></li>
+                <li><a href="#experience">./experience</a></li>
                 <li><a href="#contact">./contact</a></li>
             </ul>
         </div>
@@ -492,9 +521,9 @@
                     <div class="tech-list">
                         <span class="tech-tag">Java</span>
                         <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
                         <span class="tech-tag">Spring Security</span>
-                        <span class="tech-tag">Spring Data JPA</span>
-                        <span class="tech-tag">Hibernate</span>
                         <span class="tech-tag">REST APIs</span>
                     </div>
                 </div>
@@ -502,15 +531,17 @@
                     <h3>Database</h3>
                     <div class="tech-list">
                         <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Database Design</span>
-                        <span class="tech-tag">Normalization</span>
+                        <span class="tech-tag">Amazon RDS</span>
+                        <span class="tech-tag">SQLAlchemy</span>
+                        <span class="tech-tag">Hibernate</span>
+                        <span class="tech-tag">Spring Data JPA</span>
                     </div>
                 </div>
                 <div class="tech-card fade-in">
                     <h3>Security & Authentication</h3>
                     <div class="tech-list">
                         <span class="tech-tag">JWT</span>
+                        <span class="tech-tag">2FA</span>
                         <span class="tech-tag">OAuth</span>
                         <span class="tech-tag">BCrypt</span>
                         <span class="tech-tag">Role-based Access</span>
@@ -525,14 +556,6 @@
                         <span class="tech-tag">Postman</span>
                         <span class="tech-tag">Swagger</span>
                         <span class="tech-tag">Docker</span>
-                    </div>
-                </div>
-                <div class="tech-card fade-in">
-                    <h3>Frontend & Web</h3>
-                    <div class="tech-list">
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">HTML/CSS</span>
-                        <span class="tech-tag">Python</span>
                     </div>
                 </div>
                 <div class="tech-card fade-in">
@@ -552,6 +575,38 @@
         <div class="container">
             <h2 class="section-title">Backend Projects & Applications</h2>
             <div class="project-grid">
+                 <div class="project-card fade-in">
+                    <h3 class="project-title">Pharmacy Benefit Management - Backend</h3>
+                    <p class="project-description">
+                        Architected a secure PBM analytics backend with JWT, 2FA, and role-based access. Integrated machine learning models for data predictions using a singleton pattern for efficiency and delivered secure OTPs via Brevo SMTP service.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Authentication</div>
+                            <div class="metric-value">JWT + 2FA</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Architecture</div>
+                            <div class="metric-value">Singleton Pattern</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Database</div>
+                            <div class="metric-value">Amazon RDS</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">API</div>
+                            <div class="metric-value">FastAPI</div>
+                        </div>
+                    </div>
+                    <div class="tech-list">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">SQLAlchemy</span>
+                        <span class="tech-tag">Amazon RDS</span>
+                        <span class="tech-tag">JWT</span>
+                    </div>
+                </div>
+
                 <div class="project-card fade-in">
                     <h3 class="project-title">E-Commerce Backend API - Production Ready</h3>
                     <p class="project-description">
@@ -685,8 +740,18 @@
 
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">Education & Certifications</h2>
+            <h2 class="section-title">Experience & Education</h2>
             <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025</div>
+                        <div class="timeline-title">Backend Developer</div>
+                        <div class="timeline-company">Pharmacy Benefit Management Project</div>
+                        <p>• Gained hands-on experience building secure, high-performance APIs with Python & FastAPI.<br>
+                        • Implemented robust authentication flows, including JWT, 2FA, and role-based access control.<br>
+                        • Utilized SQLAlchemy for ORM and managed data efficiently on Amazon RDS.</p>
+                    </div>
+                </div>
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <div class="timeline-date">2022 - 2026</div>
@@ -722,6 +787,9 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Network Endpoints</h2>
+            <div style="text-align: center; margin-bottom: 50px; color: #c0c0c0; font-size: 1.1rem; line-height: 1.8;">
+                <p>I'm available for freelance opportunities & collaborations. If you have a project in mind or just want to discuss technology, feel free to reach out through the channels below.</p>
+            </div>
             <div class="contact-grid">
                 <div class="contact-card fade-in" onclick="window.open('mailto:kalaimurugan031@gmail.com', '_blank')">
                     <div class="contact-icon">📧</div>
@@ -742,11 +810,6 @@
                     <div class="contact-icon">🐙</div>
                     <h3>Git Repository</h3>
                     <p>github.com/KalaiSelvam31</p>
-                </div>
-                <div class="contact-card fade-in" onclick="window.open('https://leetcode.com/Kalai031', '_blank')">
-                    <div class="contact-icon">💻</div>
-                    <h3>LeetCode Profile</h3>
-                    <p>leetcode.com/Kalai031</p>
                 </div>
                 <div class="contact-card fade-in" onclick="window.open('https://maps.google.com/?q=Pondicherry,India', '_blank')">
                     <div class="contact-icon">🌍</div>
@@ -823,3 +886,5 @@
     </script>
 </body>
 </html>
+
+
